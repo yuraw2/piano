@@ -4,15 +4,17 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Globalization;
-using System.Linq;
+using System.Linq; //набор библиотек в C#, которые облегчают и ускоряют программирование на языке C#
 using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using System.Threading.Tasks; //это стандарт и основной инструмент для работы с асинхронностью в .NET.
+using System.Windows.Forms; //пространство имён, которое используется для написания программ, похожих на привычные приложения Windows
 using WindowsFormsApp1.Properties;
 
 namespace PianoTiles
 {
-    public partial class Form1 : Form
+    public partial class Form1 : Form //partial - говорит о том, что код класса находится в нескольких файлах, т.е. часть непосредственно в указанном вами примере, а часть непосредственно в файле дизайнера этой же формы.
+
+//Form1 : Form - это говорит о том, что класс Form1 наследуется от класса Form
     {
         public int[,] map = new int[8, 4];          //двумерный массив выступающий в виде карты
         public int cellWidth = 50;                 //Переменные отвечающии за ширину и высоту клетки
@@ -83,11 +85,11 @@ namespace PianoTiles
                     str = Resources.e6;
                     break;
             }
-            System.Media.SoundPlayer snd = new System.Media.SoundPlayer(str);         //проигрывание выбранного звука
+            System.Media.SoundPlayer snd = new System.Media.SoundPlayer(str);       //проигрывание выбранного звука
             snd.Play();
         }
 
-        public void MoveMap()
+        public void MoveMap() //функция, которая позволит смещать карту вниз
         {
             for (int i = 7; i > 0; i--)
             {
@@ -113,10 +115,10 @@ namespace PianoTiles
         {
             ClearMap();
             GenerateMap();
-            Invalidate();          //фунция инвалидейт чтобы выхвалось перересовка нашей формы
+            Invalidate();          //фунция инвалидейт чтобы вызвалось перересовка нашей формы
         }
 
-        public void ClearMap() 
+        public void ClearMap()  //фукнция очистки карты, пробегаемся по карте и обнуляем каждый элемент
         {
             for (int i = 0; i < 8; i++)
             {
@@ -137,7 +139,7 @@ namespace PianoTiles
             }
         }
 
-        public void DrawMap(Graphics g)
+        public void DrawMap(Graphics g) //функция прорисовки карты
         {
             for (int i = 0; i < 8; i++)
             {
